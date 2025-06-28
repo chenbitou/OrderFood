@@ -1,0 +1,59 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+	<wxs src="../../../../../tpls/wxs/tools.wxs" module="tools" />
+	<view class="main padding-project">
+
+		<view class="article-box margin-top-xs">
+			<!-- article content begin -->
+			<view class="article card-project shadow-project">
+				<view class="title"><text user-select="true">{{goods.GOODS_TITLE}}</text></view>
+				<view class="time">{{goods.GOODS_CATE_NAME}} </view>
+
+
+				<view class="pics">
+					<image bindtap="url" data-type='img' data-url="{{goods.GOODS_OBJ.cover[0]}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{goods.GOODS_OBJ.cover[0]}}">
+					</image>
+				</view>
+
+				<block wx:for="{{goods.GOODS_OBJ.detail}}" wx:key="key">
+					<view class="content" wx:if="{{item.type=='text'}}">
+						<text user-select="{{true}}">{{item.val}}</text>
+					</view>
+
+					<view class="pics" wx:if="{{item.type=='img'}}">
+						<image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
+						</image>
+					</view>
+				</block>
+				<!-- article content end -->
+
+
+
+			</view>
+			<!-- article content end -->
+
+		</view>
+	</view>
+
+
+	<view class="cart bg-red light" bind:tap="url" data-type="relaunch" data-url="../cart/goods_cart">
+		<view class="num">{{cartList.total||0}}</view>
+		<view class="icon-cart"></view>
+	</view>
+
+
+	<cmpt-detail mode="mode2" doHome="{{false}}" topBtnShow="{{topBtnShow}}" oid="{{goods._id}}" cate="{{goods.GOODS_CATE_NAME}}" title="{{goods.GOODS_TITLE}}" cover="{{goods.GOODS_OBJ.cover[0]}}" qr="{{goods.GOODS_QR}}" desc="查看餐品详情" bg="{{skin.PROJECT_COLOR}}">
+		<view class="bottom-line">
+			<view class="score">
+				<view class="item padding-right">
+					<text class="num"><text class="text-s" style="font-weight: normal;">￥</text>{{tools.money(goods.GOODS_OBJ.price,false)}}<text class="text-s text-grey" style="font-weight: normal;">{{goods.GOODS_OBJ.size}}</text></text>
+					<!--<text class="tt">价格</text>-->
+				</view>
+			</view>
+			<view bindtap="url"  data-url="../../comment/list/comment_list?id={{id}}&type=goods" class="join bg-green light margin-right-xs">评论<text wx:if="{{goods.GOODS_COMMENT_CNT>0}}">({{goods.GOODS_COMMENT_CNT}})</text></view>
+			<view bindtap="bindAddCartTap" class="join text-white btn-bg">加入购物车</view>
+		</view>
+	</cmpt-detail>
+</block>

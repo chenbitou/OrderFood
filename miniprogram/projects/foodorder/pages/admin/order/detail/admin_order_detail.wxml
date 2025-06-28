@@ -1,0 +1,47 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l text-grey"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l text-grey"></view>
+
+<view wx:if="{{isLoad && isAdmin}}" class="main-admin">
+	<wxs src="../../../../../../tpls/wxs/tools.wxs" module="tools" />
+	<view class="admin-comm-list">
+		<view class="item">
+			<view class="info">
+				<view class="info-item">
+					<view class="title">姓名</view>
+					<view class="mao">：</view>
+					<view class="content text-admin  text-l">{{order.user.USER_NAME}} </view>
+				</view>
+
+				<view class="info-item" bindtap="url" data-type="phone" data-url="{{order.user.USER_MOBILE}}">
+					<view class="title">手机号码</view>
+					<view class="mao">：</view>
+					<view class="content">{{order.user.USER_MOBILE}} <text class="icon-phone text-l margin-left-xs"></text></view>
+				</view>
+				<view class="info-item" style="margin-bottom: 70rpx;">
+					<view class="title">下单时间</view>
+					<view class="mao">：</view>
+					<view class="content">{{order.ORDER_ADD_TIME}} </view>
+				</view>
+
+				<view class="order-list" wx:for="{{order.ORDER_LIST}}" wx:key="key" bind:tap="url" data-url="../detail/goods_detail?id={{item.id}}">
+					<view class="title">{{item.title}}</view>
+					<view class="content">x{{item.num}}</view>
+					<view class="content">{{tools.money(item.totalPrice)}}</view>
+				</view>
+
+				<view class="order-list text-bold text-orange text-l">
+					<view class="title">总计</view>
+					<view class="content">{{order.ORDER_TOTAL}}件</view>
+					<view class="content">{{tools.money(order.ORDER_TOTAL_PRICE)}}</view>
+				</view>
+
+			</view>
+		</view>
+	</view>
+	<view style="height:30rpx;"></view>
+
+	<import src="../../../../../../tpls/public/admin_forms_detail_tpl.wxml" />
+	<template is="adminFormsDetailTpl" data="{{forms:user.USER_FORMS}}" />
+
+
+</view>

@@ -1,0 +1,109 @@
+{
+	"pages": [
+		"projects/foodorder/pages/default/index/default_index",
+		"projects/foodorder/pages/about/index/about_index",
+		"projects/foodorder/pages/search/search",
+		"projects/foodorder/pages/my/index/my_index",
+		"projects/foodorder/pages/my/reg/my_reg",
+		"projects/foodorder/pages/my/edit/my_edit",
+		"projects/foodorder/pages/my/foot/my_foot",
+		"projects/foodorder/pages/my/fav/my_fav",
+		"projects/foodorder/pages/news/index/news_index",
+		"projects/foodorder/pages/news/detail/news_detail",
+		"projects/foodorder/pages/news/cate1/news_cate1",
+		"projects/foodorder/pages/admin/news/list/admin_news_list",
+		"projects/foodorder/pages/admin/news/add/admin_news_add",
+		"projects/foodorder/pages/admin/news/edit/admin_news_edit",
+		"projects/foodorder/pages/admin/setup/about/admin_setup_about",
+		"projects/foodorder/pages/admin/setup/about_list/admin_setup_about_list",
+		"projects/foodorder/pages/admin/setup/qr/admin_setup_qr",
+		"projects/foodorder/pages/admin/index/home/admin_home",
+		"projects/foodorder/pages/admin/index/login/admin_login",
+		"projects/foodorder/pages/admin/content/admin_content",
+		"projects/foodorder/pages/admin/mgr/log/admin_log_list",
+		"projects/foodorder/pages/admin/mgr/edit/admin_mgr_edit",
+		"projects/foodorder/pages/admin/mgr/list/admin_mgr_list",
+		"projects/foodorder/pages/admin/mgr/add/admin_mgr_add",
+		"projects/foodorder/pages/admin/mgr/pwd/admin_mgr_pwd",
+		"projects/foodorder/pages/admin/user/list/admin_user_list",
+		"projects/foodorder/pages/admin/user/detail/admin_user_detail",
+		"projects/foodorder/pages/admin/user/export/admin_user_export",
+		"projects/foodorder/pages/admin/user/edit/admin_user_edit",
+		"projects/foodorder/pages/about/notice/about_notice",
+		"projects/foodorder/pages/goods/index/goods_index",
+		"projects/foodorder/pages/goods/detail/goods_detail",
+		"projects/foodorder/pages/goods/my_order_list/goods_my_order_list",
+		"projects/foodorder/pages/admin/goods/list/admin_goods_list",
+		"projects/foodorder/pages/admin/goods/add/admin_goods_add",
+		"projects/foodorder/pages/admin/goods/edit/admin_goods_edit",
+		"projects/foodorder/pages/goods/cart/goods_cart",
+		"projects/foodorder/pages/goods/my_order_detail/goods_my_order_detail",
+		"projects/foodorder/pages/goods/all/goods_all",
+		"projects/foodorder/pages/admin/order/list/admin_order_list",
+		"projects/foodorder/pages/admin/order/stat_list/admin_order_stat_list",
+		"projects/foodorder/pages/admin/order/stat_export/admin_order_stat_export",
+		"projects/foodorder/pages/admin/order/detail/admin_order_detail",
+		"projects/foodorder/pages/admin/order/export/admin_order_export",
+		"projects/foodorder/pages/comment/list/comment_list",
+		"projects/foodorder/pages/comment/add/comment_add",
+		"cmpts/public/form/form_set/field/form_set_field",
+		"cmpts/public/form/form_show/content/form_show_content",
+		"pages/test1/test1"
+	],
+	"window": {
+		"backgroundColor": "#f1f1f1",
+		"backgroundTextStyle": "dark",
+		"navigationBarBackgroundColor": "#4C7E50",
+		"navigationBarTitleText": "订餐统计小程序",
+		"navigationBarTextStyle": "white"
+	},
+	"tabBar": {
+		"custom": false,
+		"backgroundColor": "#FFFFFF",
+		"color": "#999999",
+		"selectedColor": "#4C7E50",
+		"list": [
+			{
+				"pagePath": "projects/foodorder/pages/default/index/default_index",
+				"text": "首页",
+				"iconPath": "/projects/foodorder/images/tabbar/home.png",
+				"selectedIconPath": "/projects/foodorder/images/tabbar/home_cur.png"
+			},
+			{
+				"pagePath": "projects/foodorder/pages/news/index/news_index",
+				"text": "公告通知",
+				"iconPath": "/projects/foodorder/images/tabbar/news.png",
+				"selectedIconPath": "/projects/foodorder/images/tabbar/news_cur.png"
+			},
+			{
+				"pagePath": "projects/foodorder/pages/goods/all/goods_all",
+				"text": "订餐",
+				"iconPath": "/projects/foodorder/images/tabbar/goods.png",
+				"selectedIconPath": "/projects/foodorder/images/tabbar/goods_cur.png"
+			},
+			{
+				"pagePath": "projects/foodorder/pages/goods/cart/goods_cart",
+				"text": "购物车",
+				"iconPath": "/projects/foodorder/images/tabbar/cart.png",
+				"selectedIconPath": "/projects/foodorder/images/tabbar/cart_cur.png"
+			},
+			{
+				"pagePath": "projects/foodorder/pages/my/index/my_index",
+				"text": "我的",
+				"iconPath": "/projects/foodorder/images/tabbar/my.png",
+				"selectedIconPath": "/projects/foodorder/images/tabbar/my_cur.png"
+			}
+		]
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "获取你当前位置信息用于小程序位置接口的效果展示"
+		}
+	},
+	"usingComponents": {
+		"cmpt-comm-list": "/cmpts/public/list/comm_list_cmpt",
+		"cmpt-picker": "/cmpts/public/picker/picker_cmpt",
+		"cmpt-modal": "/cmpts/public/modal/modal_cmpt"
+	},
+	"sitemapLocation": "sitemap.json"
+}

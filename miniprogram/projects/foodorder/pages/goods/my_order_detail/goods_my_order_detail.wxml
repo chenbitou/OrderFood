@@ -1,0 +1,52 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+	<wxs src="../../../../../tpls/wxs/tools.wxs" module="tools" />
+	<view class="main padding-project">
+		<view class="text-pic-list-box margin-top-xs">
+			<view class="item card-project shadow-project">
+				<view class="title-line">
+					<view class="title">{{order.ORDER_DESC}} </view>
+				</view>
+
+				<view class="author">
+					<text class="icon-calendar margin-right-xs text-s"></text><text class="text-cut">{{order.ORDER_ADD_TIME}}</text>
+				</view>
+				<view class="author" bind:tap="url" data-type="copy" data-url="{{order.ORDER_ID}}">
+					<text class="text-cut">订单号：{{order.ORDER_ID}}</text><text class="icon-copy margin-right-xs text-s"></text>
+				</view>
+				<view class="data">
+					<text wx:if="{{order.ORDER_STATUS==0}}" class="text-blue"><text class="icon-newshot margin-right-xxs"></text>未完成</text>
+					<text wx:if="{{order.ORDER_STATUS==1}}" class="text-green"><text class="icon-check margin-right-xxs"></text>订购成功</text>
+					<text wx:if="{{order.ORDER_STATUS==9}}" class="text-grey"><text class="icon-close margin-right-xxs"></text>已取消</text>
+					<text wx:if="{{order.ORDER_STATUS==99}}" class="text-orange"><text class="icon-close margin-right-xxs"></text>系统取消</text>
+
+				</view>
+
+			</view>
+
+		</view>
+
+		<view class="info-list-box margin-bottom-xxl">
+			<view class="item card-project shadow-project">
+				<view class="info margin-bottom-s">
+					<view class="center text-bold">详细信息</view>
+				</view>
+				<view class="info" wx:for="{{order.ORDER_LIST}}" wx:key="key" bind:tap="url" data-url="../detail/goods_detail?id={{item.id}}">
+					<view class="title">{{item.title}}</view>
+					<view class="content">x{{item.num}}{{item.size}}</view>
+					<view class="content">{{tools.money(item.totalPrice)}}</view>
+				</view>
+
+				<view class="info text-bold text-orange text-m">
+					<view class="title">总计</view>
+					<view class="content">{{order.ORDER_TOTAL}}件</view>
+					<view class="content">{{tools.money(order.ORDER_TOTAL_PRICE)}}</view>
+				</view>
+
+
+			</view>
+		</view>
+	</view>
+</block>

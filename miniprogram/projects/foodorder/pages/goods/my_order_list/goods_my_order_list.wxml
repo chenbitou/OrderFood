@@ -1,0 +1,48 @@
+<block wx:if="{{isLoad}}">
+	<wxs src="../../../../../tpls/wxs/tools.wxs" module="tools" />
+	<cmpt-comm-list type="my_order_list" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="order/my_list" isTotalMenu="{{true}}" sortMenusDefaultIndex="0" topBottom="120" placeholder="搜索" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+
+		</view>
+
+		<!-- List Begin -->
+		<view class="text-pic-list-box padding-project">
+
+			<view class="item card-project shadow-project" wx:for="{{dataList.list}}" wx:key="index">
+				<view class="mark">{{item.ORDER_DAY}}</view>
+
+
+				<view class="title content-cut-two"><text class="text-normal margin-right-xxs icon-title text-project text-xxs"></text>{{item.ORDER_DESC}}</view>
+
+				<view class="author" bind:tap="url" data-type="copy" data-url="{{item.ORDER_ID}}">订单号：{{item.ORDER_ID}} <text class="icon-copy"></text></view>
+				<view class="author">总计数量：{{item.ORDER_TOTAL}}份 </view>
+				<view class="author">总金额：{{tools.money(item.ORDER_TOTAL_PRICE)}}</view>
+				<view class="author">下单时间：{{item.ORDER_ADD_TIME}} </view>
+
+				<view class="author">
+					<text wx:if="{{item.ORDER_STATUS==1}}" class="text-green"><text class="icon-check margin-right-xxs"></text>订购成功</text>
+					<text wx:elif="{{item.ORDER_STATUS==9}}" class="text-orange"><text class="icon-close margin-right-xxs"></text><text>已取消</text></text>
+				</view>
+
+				<view class="data data-button">
+					<button bindtap="url" data-url="../my_order_detail/goods_my_order_detail?id={{item._id}}" class="btn mid light">查看详情</button>
+					<button wx:if="{{item.ORDER_STATUS==1}}" bindtap="bindCancelTap" data-id="{{item._id}}" class="btn mid bg-grey light"><text class="icon-close"></text>取消</button>
+				</view>
+
+			</view>
+
+			<!--load begin-->
+			<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+			<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+			<!--load end-->
+
+		</view>
+		<!-- List END -->
+
+	</cmpt-comm-list>
+
+	<!--  button Begin -->
+	<!--  button END -->
+
+</block>

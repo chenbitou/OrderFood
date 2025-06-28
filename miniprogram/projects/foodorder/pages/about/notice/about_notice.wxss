@@ -1,0 +1,21 @@
+@import "../../../../../style/public/detail.wxss";
+@import "../../../style/skin.wxss";
+
+.oprt {
+	display: flex;
+	width: 100%;
+	padding: 30rpx 0;
+}
+
+.oprt button {
+	min-width: 200rpx;
+	width: unset !important;
+}
+
+.down {
+	width: 100%;
+	padding: 20rpx 0;
+	font-size: 36rpx;
+	text-align: center;
+	color: var(--orange)
+}

@@ -1,0 +1,76 @@
+<block wx:if="{{isAdmin}}">
+	<wxs src="../../../../../../tpls/wxs/tools.wxs" module="tools" />
+	<cmpt-comm-list source='admin' type="admin-order-list" search="{{search}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/order_list" sortMenusDefaultIndex="0" topBottom="50" placeholder="搜索餐品，用户" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+			<button bindtap="url" data-url="../export/admin_order_export" class="btn radius bg-admin text-white margin-right-s"><text class="icon-down"></text>导出订单数据</button>
+		</view>
+		<!-- List Begin -->
+		<view class="admin-comm-list">
+			<view wx:if="{{dataList && dataList.total }}" class="load text-grey">共有{{dataList.total}}条符合条件记录</view>
+
+			<view class="item" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="no">{{index+1}}</view>
+
+				<view class="info">
+					<view class="info-item">
+						<view class="title">订单号</view>
+						<view class="mao">：</view>
+						<view class="content" bind:tap="url" data-type="copy" data-url="{{item.ORDER_ID}}">{{item.ORDER_ID}} <text class="icon-copy"></text></view>
+					</view>
+					<view class="info-item">
+						<view class="title">用户</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.user.USER_NAME}}，{{item.user.USER_MOBILE}} </view>
+					</view>
+					<view class="info-item">
+						<view class="title">餐品</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.ORDER_DESC}} </view>
+					</view>
+					<view class="info-item">
+						<view class="title">状态</view>
+						<view class="mao">：</view>
+						<view class="content">
+							<text wx:if="{{item.ORDER_STATUS==1}}" class="text-green">订购成功</text>
+							<text wx:elif="{{item.ORDER_STATUS==9}}" class="text-orange">用户取消</text>
+							<text wx:elif="{{item.ORDER_STATUS==99}}" class="text-red">系统取消</text>
+						</view>
+					</view>
+
+
+					<view class="info-item">
+						<view class="title">数量价格</view>
+						<view class="mao">：</view>
+						<view class="content">共{{item.ORDER_TOTAL}}份，总价{{tools.money(item.ORDER_TOTAL_PRICE)}} </view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">下单时间</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.ORDER_ADD_TIME}}</view>
+					</view>
+
+					<view class="oprt">
+						<view wx:if="{{item.ORDER_STATUS==1}}" bindtap="bindStatusTap" data-id="{{item._id}}" data-status="99" class="btn round margin-right-s"><text class="icon-close margin-right-xxs text-orange"></text>取消订单</view>
+
+						<view wx:if="{{item.ORDER_STATUS!=1}}" bindtap="bindStatusTap" data-id="{{item._id}}" data-status="1" class="btn round margin-right-s"><text class="icon-check margin-right-xxs text-green"></text>恢复订单</view>
+
+						<view bindtap="url" data-url="../detail/admin_order_detail?id={{item._id}}" class="btn round margin-right-s">订单详情</view>
+
+					</view>
+				</view>
+			</view>
+
+		</view>
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{dataList,skin:'text-grey'}}" />
+		<!--load end-->
+
+
+	</cmpt-comm-list>
+
+</block>

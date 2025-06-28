@@ -1,0 +1,49 @@
+@import '../../../../../../style/public/admin.wxss';
+
+.main-admin {
+	padding: 30rpx 0rpx;
+}
+ 
+.info-item.pic {
+	display: flex;
+}
+
+.info-item.pic image{
+	width: 180rpx;
+	height: 180rpx;
+	margin-left: 20rpx;
+	border-radius: 2rpx;
+}
+
+
+.order-list {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: 24rpx;
+	line-height: 1.5;
+	color: #333;
+	border-bottom: 2rpx dotted #ccc;
+	padding: 10rpx 0;
+}
+
+.order-list:last-child,
+.order-list:first-child {
+	border-bottom: 0;
+}
+
+.order-list .title {
+	width: 400rpx;
+	margin-right: 10rpx;
+	align-self: start;
+	position: relative;
+}
+
+.order-list .content {
+	flex: 1;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	color: #666;
+}

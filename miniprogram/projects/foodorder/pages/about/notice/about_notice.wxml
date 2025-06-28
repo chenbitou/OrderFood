@@ -1,0 +1,34 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<view wx:if="{{isLoad}}" class="main padding-project">
+
+	<view class="article-box margin-top-xs">
+		<!-- article content begin -->
+		<view class="article card-project shadow-project">
+			<view class="title text-l" style="width: 100%;text-align: center;">入会须知</view>
+			<block wx:for="{{about}}" wx:key="key">
+				<view class="content" wx:if="{{item.type=='text'}}">
+					<text user-select>{{item.val}}</text>
+				</view>
+
+				<view class="pics" wx:if="{{item.type=='img'}}">
+					<image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
+					</image>
+				</view>
+			</block>
+			<!-- article content end -->
+
+
+		</view>
+
+		<!-- article content end -->
+		<view class="oprt">
+			<button bindtap="back" class="btn-base btn-project bg-white text-black">返回</button>
+			<button bindtap="url" data-url="../../my/reg/my_reg" class="btn-base btn-project btn-bg">同意并继续注册</button>
+		</view>
+
+	</view>
+
+
+</view>

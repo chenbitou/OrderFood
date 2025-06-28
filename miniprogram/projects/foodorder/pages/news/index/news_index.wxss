@@ -1,0 +1,22 @@
+@import "../../../../../style/public/comm_box_list.wxss";
+@import "../../../style/skin.wxss"; 
+
+.comm-list-box .item-leftbig3 .leftbig-left {
+    width: 190rpx;
+    height: 150rpx;
+	margin-left: 15rpx; 
+	margin-top:15rpx;
+    border-radius: 15rpx !important;
+    overflow: hidden;
+    box-shadow: var(--ShadowSize) var(--greyShadow);
+}
+
+.comm-list-box .item-leftbig1 .leftbig-right .leftbig-title { 
+    font-size: 28rpx;
+    color: #333; 
+}
+
+.comm-list-box .item-leftbig1 .leftbig-desc { 
+    font-size: 24rpx;
+    color: #999;
+}

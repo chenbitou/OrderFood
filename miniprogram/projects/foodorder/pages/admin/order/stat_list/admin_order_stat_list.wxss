@@ -1,0 +1,17 @@
+@import '../../../../../../style/public/admin.wxss';
+@import '../../../../../../style/base/table.wxss';
+page {
+	background-color: #f8f8f8;
+}
+
+.admin-comm-list { 
+    padding: 0rpx 4rpx 0rpx; 
+}
+.admin-comm-list .item .info .oprt {
+	justify-content: center;
+} 
+
+.tbody .tr.border .td {
+   font-size: 24rpx;
+}
+ 

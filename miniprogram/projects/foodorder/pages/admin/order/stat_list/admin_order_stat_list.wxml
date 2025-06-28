@@ -1,0 +1,43 @@
+<block wx:if="{{isAdmin}}">
+	<wxs src="../../../../../../tpls/wxs/tools.wxs" module="tools" />
+	<cmpt-comm-list doDateOne="{{true}}" source='admin' type="admin-order-stat-list" search="{{search}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/order_stat_list" sortMenusDefaultIndex="0" topBottom="50" placeholder="搜索餐品" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+			<button bindtap="url" data-url="../stat_export/admin_order_stat_export" class="btn radius bg-admin text-white margin-right-s" style="width: 200rpx;"><text class="icon-down"></text>导出</button>
+		</view>
+		<!-- List Begin -->
+		<view class="admin-comm-list">
+			<view wx:if="{{dataList && dataList.total }}" class="load text-grey">
+				<text>共有{{dataList.total}}条符合条件记录</text>
+			</view>
+
+			<view class="table margin-bottom sticky1" style="width:100%">
+				<!-- 表格体 start -->
+				<view class="thead thead-border">
+					<view class="td text-s" style="width:300rpx;">餐品</view>
+					<view class="td text-s" style="width:80rpx;">数量</view>
+					<view class="td text-s" style="width:170rpx;">单价</view>
+					<view class="td text-s full">总价</view>
+				</view>
+
+				<view class="tbody">
+					<view class="tr border" wx:for="{{dataList.list}}" wx:key="key">
+						<view class="td text-s" style="width:300rpx;">{{item.ORDER_STAT_GOODS_TITLE}}</view>
+						<view class="td text-s" style="width:80rpx;">{{item.ORDER_STAT_GOODS_CNT}}</view>
+						<view class="td text-s" style="width:170rpx;">{{tools.money(item.ORDER_STAT_PRICE)}}/{{item.ORDER_STAT_SIZE}}</view>
+						<view class="td text-s full">{{tools.money(item.ORDER_STAT_TOTAL_PRICE)}}</view>
+					</view>   
+				</view>
+			</view>
+		</view>
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{dataList,skin:'text-grey'}}" />
+		<!--load end-->
+
+
+	</cmpt-comm-list>
+
+</block>
